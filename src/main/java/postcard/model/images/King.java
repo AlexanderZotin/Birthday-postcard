@@ -6,8 +6,12 @@ import java.awt.Graphics2D;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
 public class King implements Paintable, Movable {
     private static final BasicStroke strokeForCurves = new BasicStroke(40);
 
@@ -78,24 +82,5 @@ public class King implements Paintable, Movable {
         graphics2D.fill(rectOnBase);
         graphics2D.fill(filling);
         graphics2D.fill(center);
-    }
-
-    @Override
-    public boolean equals(Object otherObject) {
-        if (this == otherObject) return true;
-        if (otherObject == null || getClass() != otherObject.getClass()) return false;
-        King otherKing = (King) otherObject;
-        return Objects.equals(leftCurve, otherKing.leftCurve)
-                && Objects.equals(rightCurve, otherKing.rightCurve)
-                && Objects.equals(upperRect, otherKing.upperRect)
-                && Objects.equals(center, otherKing.center)
-                && Objects.equals(rectOnBase, otherKing.rectOnBase)
-                && Objects.equals(base, otherKing.base)
-                && Objects.equals(filling, otherKing.filling);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(leftCurve, rightCurve, upperRect, center, rectOnBase, base, filling);
     }
 }

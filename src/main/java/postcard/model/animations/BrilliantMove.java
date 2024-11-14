@@ -11,7 +11,7 @@ public class BrilliantMove extends Animation {
 
     @Override
     public void start() {
-        isStarted = true;
+        started = true;
         displayedNow.add(pawn);
         addText("Желаю тебе делать ещё больше", "блестящих ходов");
         timer.schedule(this, 0, 20);

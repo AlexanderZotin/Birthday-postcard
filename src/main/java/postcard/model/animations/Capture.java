@@ -9,7 +9,7 @@ public class Capture extends Animation {
 
     @Override
     public void start() {
-        isStarted = true;
+        started = true;
         displayedNow.add(pawn);
         displayedNow.add(king);
         addText("и встречать интересные стратегические", "эндшпили, которые, как ты говорил,",

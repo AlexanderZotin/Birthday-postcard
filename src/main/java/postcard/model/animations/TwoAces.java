@@ -9,7 +9,7 @@ public class TwoAces extends Animation {
 
     @Override
     public void start() {
-        isStarted = true;
+        started = true;
         addText("И в бридже тебе тоже успехов.");
         displayedNow.add(heartAce);
         displayedNow.add(peakAce);

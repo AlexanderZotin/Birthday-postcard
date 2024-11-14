@@ -7,8 +7,12 @@ import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
 public class Pawn implements Paintable, Movable {
     private final Ellipse2D.Float head = new Ellipse2D.Float(253, 120, 90, 90);
     private final Ellipse2D.Float neck = new Ellipse2D.Float(240, 200, 115, 26);
@@ -79,23 +83,5 @@ public class Pawn implements Paintable, Movable {
     public void moveTo(int x, int y) {
         moveByX((int) (x - head.x));
         moveByY((int)(y - head.y));
-    }
-
-    @Override
-    public boolean equals(Object otherObject) {
-        if(this == otherObject) return true;
-        if(otherObject == null || this.getClass() != otherObject.getClass()) return false;
-        Pawn otherPawn = (Pawn) otherObject;
-        return Objects.equals(head, otherPawn.head)
-                && Objects.equals(neck, otherPawn.neck)
-                && Objects.equals(base, otherPawn.base)
-                && Objects.equals(leftCurve, otherPawn.leftCurve)
-                && Objects.equals(rightCurve, otherPawn.rightCurve)
-                && Objects.equals(filling, otherPawn.filling);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(head, neck, base, leftCurve, rightCurve, filling);
     }
 }

@@ -11,7 +11,7 @@ public class HearthAnimation extends Animation {
 
     @Override
     public void start() {
-        isStarted = true;
+        started = true;
         displayedNow.add(heart);
         timer.schedule(this, 0, 20);
     }

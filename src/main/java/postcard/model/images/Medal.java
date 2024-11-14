@@ -6,8 +6,12 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.QuadCurve2D;
-import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
 public class Medal implements Paintable, Movable {
     private final Ellipse2D.Float innerRound;
     private final Ellipse2D.Float outerRound;
@@ -64,21 +68,5 @@ public class Medal implements Paintable, Movable {
         graphics2D.setColor(gold);
         graphics2D.setFont(new Font(null, Font.BOLD, 50));
         graphics2D.drawString(String.valueOf(place), xOfNumberPlace, yOfNumberPlace);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Medal medal = (Medal) o;
-        return  place == medal.place
-                && Objects.equals(innerRound, medal.innerRound)
-                && Objects.equals(outerRound, medal.outerRound)
-                && Objects.equals(ribbon, medal.ribbon);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(innerRound, outerRound, ribbon, place);
     }
 }

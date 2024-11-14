@@ -10,7 +10,7 @@ public class MedalAnimation extends Animation {
 
     @Override
     public void start() {
-        isStarted = true;
+        started = true;
         displayedNow.add(card);
         displayedNow.add(medal);
         addText("Ты недавно получил медаль на турнире,", "и я надеюсь, что результаты",

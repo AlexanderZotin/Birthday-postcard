@@ -2,6 +2,7 @@ package postcard.model.animations;
 
 import postcard.model.images.Paintable;
 import postcard.model.images.Text;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -10,8 +11,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import lombok.Getter;
+
 public abstract class Animation extends TimerTask implements Paintable {
-    protected boolean isStarted;
+    protected @Getter boolean started;
     protected Animation next;
     //В проекте используются таймеры, то есть многопоточность фактически присутствует
     protected List<Paintable> displayedNow = new CopyOnWriteArrayList<>();
@@ -19,7 +22,7 @@ public abstract class Animation extends TimerTask implements Paintable {
     protected int runCounts;
 
     protected void addText(String... strings) {
-        Font font = new Font("Serif", Font.ITALIC, 30);
+        var font = new Font("Serif", Font.ITALIC, 30);
         int y = 520;
         for(String current: strings) {
             Text text = new Text(current, y, 500, font, Color.BLUE);
@@ -31,13 +34,9 @@ public abstract class Animation extends TimerTask implements Paintable {
     protected void stopAnimation() {
         cancel();
         displayedNow.clear();
-        isStarted = false;
+        started = false;
         if(next == null) System.exit(0);
         else next.start();
-    }
-
-    public boolean isStarted() {
-        return isStarted;
     }
 
     public void andThen(Animation next) {

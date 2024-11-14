@@ -1,9 +1,10 @@
 package postcard.model.images;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Font;
-import java.util.Objects;
+import java.awt.Graphics2D;
+
+import lombok.NonNull;
 
 public class Text implements Paintable {
     private final String value;
@@ -12,12 +13,12 @@ public class Text implements Paintable {
     private final Font font;
     private final Color color;
 
-    public Text(String value, int y, int windowWidth, Font font, Color color) {
-        this.value = Objects.requireNonNull(value, "Параметр value не может быть null!");
+    public Text(@NonNull String value, int y, int windowWidth, @NonNull Font font, @NonNull Color color) {
+        this.value = value;
         this.y = y;
         specifier = (int) Math.round(windowWidth / 14.5 + font.getSize2D() / 14.5 + value.length() / 14.5);
-        this.font = Objects.requireNonNull(font, "Параметр font не должен быть null!");
-        this.color = Objects.requireNonNull(color, "Параметр color не должен быть null!");
+        this.font = font;
+        this.color = color;
     }
 
     @Override

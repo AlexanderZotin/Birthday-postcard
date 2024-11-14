@@ -2,8 +2,12 @@ package postcard.model.images;
 
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
 public class ArrowToRight implements Paintable {
     private final Polygon polygon;
 
@@ -17,18 +21,5 @@ public class ArrowToRight implements Paintable {
     public void paint(Graphics2D graphics2D) {
         graphics2D.setColor(BrilliantMoveIcon.TURQUOISE);
         graphics2D.fillPolygon(polygon);
-    }
-
-    @Override
-    public boolean equals(Object otherObject) {
-        if(this == otherObject) return true;
-        if(otherObject == null || getClass() != otherObject.getClass()) return false;
-        ArrowToRight that = (ArrowToRight) otherObject;
-        return Objects.equals(polygon, that.polygon);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(polygon);
     }
 }

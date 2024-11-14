@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
-import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
 public class BrilliantMoveIcon implements Paintable {
     private final Ellipse2D.Float circle;
     private final int xOfString;
@@ -27,19 +31,5 @@ public class BrilliantMoveIcon implements Paintable {
         graphics2D.setColor(Color.WHITE);
         graphics2D.setFont(font);
         graphics2D.drawString(text, xOfString, yOfString);
-    }
-
-    @Override
-    public boolean equals(Object otherObject) {
-        if (this == otherObject) return true;
-        if (otherObject == null || getClass() != otherObject.getClass()) return false;
-        BrilliantMoveIcon that = (BrilliantMoveIcon) otherObject;
-        return xOfString == that.xOfString && yOfString == that.yOfString
-                && Objects.equals(circle, that.circle);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(circle, xOfString, yOfString);
     }
 }

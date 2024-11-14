@@ -5,8 +5,12 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.geom.QuadCurve2D;
-import java.util.Objects;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
 public class Heart implements Paintable, Movable {
     private final QuadCurve2D.Float rightCurve =
             new QuadCurve2D.Float(275, 100, 100, 10, 260, 225);
@@ -57,20 +61,5 @@ public class Heart implements Paintable, Movable {
         graphics2D.draw(rightCurve);
         graphics2D.draw(leftCurve);
         graphics2D.fillPolygon(filling);
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) return true;
-        if (other == null || getClass() != other.getClass()) return false;
-        Heart otherHeart = (Heart) other;
-        return Objects.equals(rightCurve, otherHeart.rightCurve)
-                && Objects.equals(leftCurve, otherHeart.leftCurve)
-                && Objects.equals(filling, otherHeart.filling);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(rightCurve, leftCurve, filling);
     }
 }

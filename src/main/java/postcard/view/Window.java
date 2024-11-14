@@ -5,8 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.util.Objects;
+
+import lombok.NonNull;
+import postcard.controller.Controller;
 
 public class Window extends JFrame {
     private final JPanel generalPanel = new JPanel(new BorderLayout());
@@ -22,24 +23,23 @@ public class Window extends JFrame {
         pack();
     }
 
-    @Override
-    public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        if(visible) setLocationRelativeTo(null);
-    }
-
-    public void setPicture(Picture picture) {
-        Objects.requireNonNull(picture, "Параметр picture не должен быть null!");
+    public void setPicture(@NonNull Picture picture) {
         if(this.picture != null) generalPanel.remove(this.picture);
         generalPanel.add("Center", picture);
         this.picture = picture;
     }
 
+    public void subscribeToController(@NonNull Controller controller) {
+        go.addActionListener(controller);
+    }
+    
     public void removeButton() {
         generalPanel.remove(go);
     }
-
-    public void addButtonToListener(ActionListener listener) {
-        go.addActionListener(listener);
+    
+    @Override
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if(visible) setLocationRelativeTo(null);
     }
 }

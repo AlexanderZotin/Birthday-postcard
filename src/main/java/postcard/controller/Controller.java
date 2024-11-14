@@ -6,23 +6,20 @@ import postcard.view.Window;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import lombok.NonNull;
 
 public class Controller implements ActionListener {
     private final Window view;
     private final Picture picture = new Picture();
 
-    public Controller(Window view) {
-        this.view = Objects.requireNonNull(view, "Параметр view не должен быть null!");
+    public Controller(@NonNull Window view) {
+        this.view = view;
         view.setPicture(picture);
     }
-
-    public void bindViewToListener() {
-        view.addButtonToListener(this);
-    }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         view.removeButton();
